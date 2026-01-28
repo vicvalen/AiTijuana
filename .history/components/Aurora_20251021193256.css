@@ -1,0 +1,30 @@
+.aurora-container {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* ensure the aurora stays behind all content */
+  pointer-events: none; /* don't block interactions */
+}
+
+/* Ensure the WebGL canvas fills the screen and stays fixed behind content */
+.aurora-container canvas {
+  display: block;
+  position: fixed;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Fallback visible background if WebGL fails to initialize */
+.aurora-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, #071129 0%, #10234a 50%, #060814 100%);
+}

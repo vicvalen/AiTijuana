@@ -9,7 +9,7 @@ export async function POST(request: Request) {
         const { name, email, phone, company, industry, needs, message, budget } = body;
 
         const { data, error } = await resend.emails.send({
-            from: 'Ai-Studio Web <onboarding@resend.dev>', // Change to 'contacto@aitijuana.studio' once verified as sender
+            from: 'Ai-Studio Web <contacto@aitijuana.studio>',
             to: ['contacto@aitijuana.studio'],
             subject: `Nuevo Lead: ${name} - ${company || 'Sin Empresa'}`,
             react: EmailTemplate({
@@ -25,11 +25,13 @@ export async function POST(request: Request) {
         });
 
         if (error) {
+            console.error("Resend API Error:", error);
             return Response.json({ error }, { status: 500 });
         }
 
         return Response.json(data);
     } catch (error) {
+        console.error("Internal Server Error:", error);
         return Response.json({ error }, { status: 500 });
     }
 }

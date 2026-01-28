@@ -21,7 +21,8 @@ export function SmartContactForm() {
         email: "",
         phone: "",
         budget: "",
-        message: ""
+        message: "",
+        source: ""
     });
     const [needs, setNeeds] = useState<Record<string, boolean>>({});
 
@@ -62,6 +63,7 @@ export function SmartContactForm() {
                     industry: currentIndustry?.label || "No especificada",
                     budget: formData.budget,
                     message: formData.message,
+                    source: formData.source,
                     needs: needs
                 }),
             });
@@ -70,11 +72,13 @@ export function SmartContactForm() {
                 throw new Error("Failed to send message");
             }
 
-            alert("Mensaje enviado con éxito. Un especialista de tu industria te contactará pronto.");
             // Reset form
-            setFormData({ name: "", company: "", email: "", phone: "", budget: "", message: "" });
+            setFormData({ name: "", company: "", email: "", phone: "", budget: "", message: "", source: "" });
             setIndustry("");
             setNeeds({});
+
+            // Redirect to thank you page
+            window.location.href = "/thank-you";
 
         } catch (error) {
             alert("Hubo un error al enviar tu mensaje. Por favor intenta de nuevo.");
@@ -228,6 +232,22 @@ export function SmartContactForm() {
                             placeholder="Cuéntanos más sobre tus objetivos..."
                             className="min-h-[100px] bg-background-input border-border-primary text-text-primary"
                         />
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="sc-source" className="text-text-primary">¿Cómo te enteraste de nosotros?</Label>
+                        <Select onValueChange={(value) => setFormData(prev => ({ ...prev, source: value }))}>
+                            <SelectTrigger id="sc-source" className="bg-background-input border-border-primary text-text-primary h-12">
+                                <SelectValue placeholder="Selecciona una opción" />
+                            </SelectTrigger>
+                            <SelectContent className="bg-background-card border-border-primary text-text-primary">
+                                <SelectItem value="google">Búsqueda en Google</SelectItem>
+                                <SelectItem value="social">Redes Sociales (LinkedIn, Instagram)</SelectItem>
+                                <SelectItem value="referral">Recomendación</SelectItem>
+                                <SelectItem value="blog">Artículos / Blog</SelectItem>
+                                <SelectItem value="other">Otro</SelectItem>
+                            </SelectContent>
+                        </Select>
                     </div>
 
                     <Button

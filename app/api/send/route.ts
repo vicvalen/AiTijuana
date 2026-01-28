@@ -25,6 +25,7 @@ export async function POST(request: Request) {
                     <h3>Detalles del Proyecto</h3>
                     <p><strong>Industria:</strong> ${industry}</p>
                     <p><strong>Presupuesto:</strong> ${budget}</p>
+                    <p><strong>Fuente:</strong> ${body.source || 'No especificada'}</p>
                     <p><strong>Necesidades:</strong> ${needs ? Object.entries(needs).filter(([_, v]) => v).map(([k]) => k).join(', ') : 'Ninguna'}</p>
                     
                     <h3>Mensaje</h3>

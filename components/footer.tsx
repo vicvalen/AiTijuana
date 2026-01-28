@@ -30,6 +30,7 @@ const footerLinks: FooterSection[] = [
     links: [
       { title: "Sobre nosotros", href: "/nosotros" },
       { title: "Contacto", href: "/contacto" },
+      { title: "contacto@aitijuana.studio", href: "mailto:contacto@aitijuana.studio" },
       { title: "Política de privacidad", href: "/privacidad" },
       { title: "Términos de servicio", href: "/terminos" },
     ],

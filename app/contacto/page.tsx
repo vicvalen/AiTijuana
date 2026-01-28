@@ -55,7 +55,7 @@ export default function ContactPage() {
                                         <div>
                                             <h4 className="text-lg font-semibold text-text-primary">Email</h4>
                                             <p className="text-text-secondary">
-                                                contacto@ai-studiomarketing.com
+                                                contacto@aitijuana.studio
                                             </p>
                                         </div>
                                     </div>

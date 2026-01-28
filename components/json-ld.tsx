@@ -7,6 +7,7 @@ export function JsonLd() {
     "description": "Agencia especializada en Inteligencia Artificial y Automatización en Tijuana. Desarrollamos agentes IA, chatbots y sistemas de optimización de ventas.",
     "url": "https://aitijuana.studio",
     "telephone": "+52-664-794-7666",
+    "email": "contacto@aitijuana.studio",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",

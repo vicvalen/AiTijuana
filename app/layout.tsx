@@ -5,6 +5,7 @@ import "./globals.css"
 import { PageTransition } from "@/components/page-transition"
 import { NavigationTransition } from "@/components/navigation-transition"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 import { JsonLd } from "@/components/json-ld"
 
 export const metadata: Metadata = {
@@ -98,6 +99,7 @@ export default function RootLayout({
           <PageTransition>{children}</PageTransition>
         </Suspense>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   )

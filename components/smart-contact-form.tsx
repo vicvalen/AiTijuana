@@ -7,14 +7,23 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Send, Building2, Stethoscope, Home, ShoppingBag, Briefcase, Zap } from "lucide-react";
+import { Send, Stethoscope, Home, ShoppingBag, Briefcase, Zap } from "lucide-react";
 
 export function SmartContactForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [industry, setIndustry] = useState("");
-    const [step, setStep] = useState(1);
+
+    // Form States
+    const [formData, setFormData] = useState({
+        name: "",
+        company: "",
+        email: "",
+        phone: "",
+        budget: "",
+        message: ""
+    });
+    const [needs, setNeeds] = useState<Record<string, boolean>>({});
 
     const industries = [
         { id: "clinica", label: "Clínica / Salud", icon: <Stethoscope className="w-5 h-5" />, needs: ["Agenda de Pacientes", "Recordatorios WhatsApp", "Historial Clínico IA"] },
@@ -26,13 +35,53 @@ export function SmartContactForm() {
 
     const currentIndustry = industries.find(i => i.id === industry);
 
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { id, value } = e.target;
+        setFormData(prev => ({ ...prev, [id.replace('sc-', '')]: value }));
+    };
+
+    const handleNeedToggle = (need: string, checked: boolean) => {
+        setNeeds(prev => ({ ...prev, [need]: checked }));
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
-        // Simulate form submission
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        setIsSubmitting(false);
-        alert("Mensaje enviado con éxito. Un especialista de tu industria te contactará pronto.");
+
+        try {
+            const response = await fetch('/api/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    company: formData.company,
+                    email: formData.email,
+                    phone: formData.phone,
+                    industry: currentIndustry?.label || "No especificada",
+                    budget: formData.budget,
+                    message: formData.message,
+                    needs: needs
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to send message");
+            }
+
+            alert("Mensaje enviado con éxito. Un especialista de tu industria te contactará pronto.");
+            // Reset form
+            setFormData({ name: "", company: "", email: "", phone: "", budget: "", message: "" });
+            setIndustry("");
+            setNeeds({});
+
+        } catch (error) {
+            alert("Hubo un error al enviar tu mensaje. Por favor intenta de nuevo.");
+            console.error(error);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -50,8 +99,8 @@ export function SmartContactForm() {
                                     key={item.id}
                                     onClick={() => setIndustry(item.id)}
                                     className={`cursor-pointer p-4 rounded-xl border transition-all duration-200 flex items-center gap-3 ${industry === item.id
-                                            ? "bg-accent-primary/20 border-accent-primary shadow-glow-accent"
-                                            : "bg-background-input border-border-primary hover:border-text-secondary hover:bg-background-secondary"
+                                        ? "bg-accent-primary/20 border-accent-primary shadow-glow-accent"
+                                        : "bg-background-input border-border-primary hover:border-text-secondary hover:bg-background-secondary"
                                         }`}
                                 >
                                     <div className={`${industry === item.id ? "text-accent-primary" : "text-text-secondary"}`}>
@@ -74,14 +123,24 @@ export function SmartContactForm() {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                     {currentIndustry.needs.map((need, idx) => (
                                         <div key={idx} className="flex items-center space-x-3 p-3 rounded-lg bg-background-input border border-border-primary">
-                                            <Checkbox id={`need-${idx}`} className="border-text-secondary data-[state=checked]:bg-accent-primary data-[state=checked]:border-accent-primary" />
+                                            <Checkbox
+                                                id={`need-${idx}`}
+                                                className="border-text-secondary data-[state=checked]:bg-accent-primary data-[state=checked]:border-accent-primary"
+                                                onCheckedChange={(checked: boolean) => handleNeedToggle(need, checked)}
+                                                checked={!!needs[need]}
+                                            />
                                             <Label htmlFor={`need-${idx}`} className="text-text-primary cursor-pointer w-full font-normal">
                                                 {need}
                                             </Label>
                                         </div>
                                     ))}
                                     <div className="flex items-center space-x-3 p-3 rounded-lg bg-background-input border border-border-primary">
-                                        <Checkbox id="need-other" className="border-text-secondary data-[state=checked]:bg-accent-primary data-[state=checked]:border-accent-primary" />
+                                        <Checkbox
+                                            id="need-other"
+                                            className="border-text-secondary data-[state=checked]:bg-accent-primary data-[state=checked]:border-accent-primary"
+                                            onCheckedChange={(checked: boolean) => handleNeedToggle("Otro", checked)}
+                                            checked={!!needs["Otro"]}
+                                        />
                                         <Label htmlFor="need-other" className="text-text-primary cursor-pointer w-full font-normal">
                                             Otro / No estoy seguro
                                         </Label>
@@ -101,25 +160,53 @@ export function SmartContactForm() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2">
                             <Label htmlFor="sc-name" className="text-text-primary">Nombre Completo</Label>
-                            <Input id="sc-name" placeholder="Tu nombre" className="bg-background-input border-border-primary text-text-primary h-12" required />
+                            <Input
+                                id="sc-name"
+                                value={formData.name}
+                                onChange={handleInputChange}
+                                placeholder="Tu nombre"
+                                className="bg-background-input border-border-primary text-text-primary h-12"
+                                required
+                            />
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="sc-company" className="text-text-primary">Empresa</Label>
-                            <Input id="sc-company" placeholder="Nombre de tu empresa" className="bg-background-input border-border-primary text-text-primary h-12" />
+                            <Input
+                                id="sc-company"
+                                value={formData.company}
+                                onChange={handleInputChange}
+                                placeholder="Nombre de tu empresa"
+                                className="bg-background-input border-border-primary text-text-primary h-12"
+                            />
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="sc-email" className="text-text-primary">Email Corporativo</Label>
-                            <Input id="sc-email" type="email" placeholder="nombre@empresa.com" className="bg-background-input border-border-primary text-text-primary h-12" required />
+                            <Input
+                                id="sc-email"
+                                type="email"
+                                value={formData.email}
+                                onChange={handleInputChange}
+                                placeholder="nombre@empresa.com"
+                                className="bg-background-input border-border-primary text-text-primary h-12"
+                                required
+                            />
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="sc-phone" className="text-text-primary">Teléfono / WhatsApp</Label>
-                            <Input id="sc-phone" type="tel" placeholder="+52 ..." className="bg-background-input border-border-primary text-text-primary h-12" />
+                            <Input
+                                id="sc-phone"
+                                type="tel"
+                                value={formData.phone}
+                                onChange={handleInputChange}
+                                placeholder="+52 ..."
+                                className="bg-background-input border-border-primary text-text-primary h-12"
+                            />
                         </div>
                     </div>
 
                     <div className="space-y-2">
                         <Label htmlFor="sc-budget" className="text-text-primary">Presupuesto Estimado (USD)</Label>
-                        <Select>
+                        <Select onValueChange={(value) => setFormData(prev => ({ ...prev, budget: value }))}>
                             <SelectTrigger id="sc-budget" className="bg-background-input border-border-primary text-text-primary h-12">
                                 <SelectValue placeholder="Selecciona un rango" />
                             </SelectTrigger>
@@ -134,7 +221,13 @@ export function SmartContactForm() {
 
                     <div className="space-y-2">
                         <Label htmlFor="sc-message" className="text-text-primary">Detalles Adicionales</Label>
-                        <Textarea id="sc-message" placeholder="Cuéntanos más sobre tus objetivos..." className="min-h-[100px] bg-background-input border-border-primary text-text-primary" />
+                        <Textarea
+                            id="sc-message"
+                            value={formData.message}
+                            onChange={handleInputChange}
+                            placeholder="Cuéntanos más sobre tus objetivos..."
+                            className="min-h-[100px] bg-background-input border-border-primary text-text-primary"
+                        />
                     </div>
 
                     <Button
@@ -144,7 +237,7 @@ export function SmartContactForm() {
                         disabled={isSubmitting}
                     >
                         {isSubmitting ? (
-                            "Analizando requerimientos..."
+                            "Enviando..."
                         ) : (
                             <>
                                 Solicitar Propuesta Inteligente <Send className="ml-2 h-5 w-5" />

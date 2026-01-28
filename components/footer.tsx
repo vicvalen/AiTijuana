@@ -20,28 +20,25 @@ const footerLinks: FooterSection[] = [
   {
     label: "Producto",
     links: [
-      { title: "Características", href: "/features" },
-      { title: "Equipo IA", href: "/ai-team" },
-      { title: "Calculadora ROI", href: "/roi-calculator" },
-      { title: "Integración", href: "/integration" },
+      { title: "SmartEngine", href: "/smartengine" },
+      { title: "Soluciones", href: "/soluciones" },
+      { title: "Calculadora ROI", href: "/#roi-calculator" },
     ],
   },
   {
     label: "Compañía",
     links: [
-      { title: "Sobre nosotros", href: "/about" },
-      { title: "Contacto", href: "/contact" },
-      { title: "Política de privacidad", href: "/privacy" },
-      { title: "Términos de servicio", href: "/terms" },
+      { title: "Sobre nosotros", href: "/nosotros" },
+      { title: "Contacto", href: "/contacto" },
+      { title: "Política de privacidad", href: "/privacidad" },
+      { title: "Términos de servicio", href: "/terminos" },
     ],
   },
   {
     label: "Recursos",
     links: [
       { title: "Blog", href: "/blog" },
-      { title: "Casos de estudio", href: "/case-studies" },
-      { title: "Documentación", href: "/docs" },
-      { title: "Soporte", href: "/support" },
+      { title: "Casos de éxito", href: "/casos-exito" },
     ],
   },
   {

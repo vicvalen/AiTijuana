@@ -27,16 +27,16 @@ export function DealershipHeroHeader() {
   return (
     <div className="space-y-8">
       <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight text-balance animate-fade-in-heading">
-  Nunca pierdas otro cliente potencial
+        Nunca pierdas otro cliente potencial
       </h1>
 
       <div className="animate-fade-in-subheading">
         {/* Mobile version - stacked */}
         <div className="flex flex-col items-center gap-1 sm:hidden">
-          <span className="text-base text-slate-300">Los concesionarios irlandeses pierden</span>
+          <span className="text-base text-slate-300">Los concesionarios pierden</span>
           <div className="flex items-center gap-2">
             <span className="text-2xl font-bold bg-linear-to-r from-red-400 to-orange-400 bg-clip-text text-transparent animate-pulse-glow">
-              €200K+
+              $200K+
             </span>
             <span className="text-base text-slate-300">anualmente</span>
           </div>
@@ -44,9 +44,9 @@ export function DealershipHeroHeader() {
 
         {/* Desktop version - single line */}
         <div className="hidden sm:flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
-          <span className="text-xl md:text-2xl text-slate-300">Los concesionarios irlandeses pierden</span>
+          <span className="text-xl md:text-2xl text-slate-300">Los concesionarios pierden</span>
           <span className="text-3xl md:text-4xl font-bold bg-linear-to-r from-red-400 to-orange-400 bg-clip-text text-transparent animate-pulse-glow">
-            €200K+
+            $200K+
           </span>
           <span className="text-xl md:text-2xl text-slate-300">anualmente</span>
         </div>

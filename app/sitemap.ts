@@ -41,7 +41,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.7,
         },
         {
-            url: `${baseUrl}/car-dealerships`,
+            url: `${baseUrl}/sitemap.xml`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 0.1,
+        },
+        {
+            url: `${baseUrl}/casos-exito`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.8,

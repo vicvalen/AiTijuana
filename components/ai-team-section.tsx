@@ -19,7 +19,7 @@ const conversations = [
         delay: 2500,
       },
       {
-        text: "¡Buena elección! El Premium Plus parte de €42.500. Tenemos negro y blanco disponibles. ¿Te gustaría agendar una prueba de manejo?",
+        text: "¡Buena elección! El Premium Plus parte de $42.500. Tenemos negro y blanco disponibles. ¿Te gustaría agendar una prueba de manejo?",
         sender: "ai",
         delay: 3500,
       },
@@ -52,7 +52,7 @@ const conversations = [
         delay: 2500,
       },
       {
-        text: "Ofrecemos financiación excelente. Las tasas actuales comienzan en 2.9% APR para compradores calificados, y también ofrecemos leasing desde €379/mes.",
+        text: "Ofrecemos financiación excelente. Las tasas actuales comienzan en 2.9% APR para compradores calificados, y también ofrecemos leasing desde $379/mes.",
         sender: "ai",
         delay: 4000,
       },

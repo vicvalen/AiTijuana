@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/private/',
         },
-        sitemap: 'https://ai-studiomarketing.com/sitemap.xml',
+        sitemap: 'https://aitijuana.studio/sitemap.xml',
     }
 }

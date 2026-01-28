@@ -3,9 +3,9 @@ export function JsonLd() {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Ai-Studio | Agencia de Inteligencia Artificial en Tijuana",
-    "image": "https://ai-studiomarketing.com/og-image.jpg",
+    "image": "https://aitijuana.studio/og-image.jpg",
     "description": "Agencia especializada en Inteligencia Artificial y Automatización en Tijuana. Desarrollamos agentes IA, chatbots y sistemas de optimización de ventas.",
-    "url": "https://ai-studiomarketing.com",
+    "url": "https://aitijuana.studio",
     "telephone": "+52-664-794-7666",
     "priceRange": "$$",
     "address": {

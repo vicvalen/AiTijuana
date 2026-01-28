@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   creator: "Ai-Studio",
   publisher: "Ai-Studio",
   alternates: {
-    canonical: "https://ai-studiomarketing.com",
+    canonical: "https://aitijuana.studio",
   },
   robots: {
     index: true,
@@ -42,13 +42,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_MX",
-    url: "https://ai-studiomarketing.com",
+    url: "https://aitijuana.studio",
     title: "Agencia de Inteligencia Artificial en Tijuana | Ai-Studio",
     description: "Desarrollamos Agentes de Inteligencia Artificial y soluciones de automatización en Tijuana. Potencia tu negocio con tecnología de vanguardia.",
     siteName: "Ai-Studio - Inteligencia Artificial en Tijuana",
     images: [
       {
-        url: "https://ai-studiomarketing.com/og-image.jpg",
+        url: "https://aitijuana.studio/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Agencia de Inteligencia Artificial en Tijuana",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     title: "Agencia de Inteligencia Artificial en Tijuana",
     description: "Desarrollo de Agentes IA y automatización de procesos para empresas en Tijuana y Baja California.",
     creator: "@ai_studio",
-    images: ["https://ai-studiomarketing.com/twitter-image.jpg"],
+    images: ["https://aitijuana.studio/twitter-image.jpg"],
   },
   verification: {
     google: "google-site-verification-code",

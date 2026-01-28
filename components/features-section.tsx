@@ -99,14 +99,14 @@ const AnimatedChatDemo = ({ isActive }: { isActive: boolean }) => {
           <div
             key={i}
             className={`flex ${msg.isBot ? "justify-start" : "justify-end"} transition-all duration-500 ${msg.visible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-2"
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-2"
               }`}
           >
             <div
               className={`max-w-[80%] px-3 py-1.5 rounded-full text-xs ${msg.isBot
-                  ? "bg-slate-200 text-slate-700"
-                  : "bg-blue-500 text-white"
+                ? "bg-slate-200 text-slate-700"
+                : "bg-blue-500 text-white"
                 }`}
             >
               {msg.text}
@@ -216,12 +216,12 @@ const AnimatedCalendarDemo = ({ isActive }: { isActive: boolean }) => {
           <div
             key={day}
             className={`w-4 h-4 flex items-center justify-center rounded transition-all duration-300 ${day === selectedDate
-                ? booked
-                  ? "bg-green-500 text-white scale-110"
-                  : "bg-blue-500 text-white scale-110"
-                : day % 7 === 0 || day % 6 === 0
-                  ? "bg-slate-200 text-slate-400"
-                  : "bg-white text-slate-600 hover:bg-slate-100"
+              ? booked
+                ? "bg-green-500 text-white scale-110"
+                : "bg-blue-500 text-white scale-110"
+              : day % 7 === 0 || day % 6 === 0
+                ? "bg-slate-200 text-slate-400"
+                : "bg-white text-slate-600 hover:bg-slate-100"
               }`}
           >
             {day}
@@ -511,13 +511,13 @@ export function FeaturesSection() {
         <div className="max-w-7xl mx-auto relative">
           <div
             className={`text-center mb-12 sm:mb-20 transition-all duration-1000 ${isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-8"
               }`}
           >
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-sm font-medium mb-6">
               <svg
-                className="w-4 h-4 mr-2 text-slate-600"
+                className="w-4 h-4 mr-2 text-gray-600"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -525,13 +525,13 @@ export function FeaturesSection() {
               </svg>
               IA trabajando 24/7 - No pierdas ningún lead
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 text-balance mb-4 sm:mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black text-balance mb-4 sm:mb-6">
               Tu equipo de IA {" "}
-              <span className="bg-linear-to-r from-slate-600 to-slate-400 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent">
                 nunca duerme
               </span>
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-slate-600 max-w-3xl mx-auto font-light leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-neutral-800 max-w-3xl mx-auto font-light leading-relaxed">
               Observa cómo nuestra IA gestiona interacciones reales con clientes las 24 horas,
               calificando leads automáticamente y reservando citas mientras tú
               te concentras en hacer crecer tu negocio.
@@ -540,8 +540,8 @@ export function FeaturesSection() {
 
           <div
             className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 transition-all duration-1000 delay-300 ${isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-12"
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-12"
               }`}
           >
             {features.map((feature, index) => (
@@ -561,11 +561,11 @@ export function FeaturesSection() {
                     />
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 group-hover:text-slate-700 transition-colors duration-300">
+                  <h3 className="text-xl sm:text-2xl font-bold text-black mb-4 group-hover:text-neutral-700 transition-colors duration-300">
                     {feature.title}
                   </h3>
 
-                  <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                  <p className="text-neutral-700 text-sm sm:text-base leading-relaxed">
                     {feature.description}
                   </p>
                 </div>

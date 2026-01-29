@@ -86,6 +86,40 @@ const posts: BlogPost[] = [
 
 const CRM_URL = 'https://crm.aitijuana.studio';
 
+// Helper to normalize API response to our Interface
+function normalizePost(data: any): BlogPost {
+    // Handle cases where data might be nested under 'data' or 'attributes' (common in Strapi/CMS)
+    const p = data.attributes || data;
+
+    return {
+        id: p.id || p._id || `generated-${Math.random()}`,
+        slug: p.slug,
+        title: p.title,
+        excerpt: p.excerpt || p.summary || "",
+        content: p.content || p.body || p.html || "<p>Contenido no disponible.</p>",
+        category: p.category || "General",
+        date: p.published_at ? new Date(p.published_at).toLocaleDateString("es-MX", { year: 'numeric', month: 'short', day: 'numeric' }) : new Date().toLocaleDateString(),
+        readTime: p.read_time || "5 min", // Default if missing
+        image: p.featured_image || p.image || "/images/blog/default.jpg",
+        tags: Array.isArray(p.tags) ? p.tags : (p.keywords ? p.keywords.split(',') : []),
+
+        // Advanced SEO Mapping
+        updatedAt: p.updated_at || p.published_at,
+        author: {
+            name: p.author_name || p.author?.name || "Ai-Studio",
+            avatar: p.author_avatar || p.author?.avatar,
+            role: p.author_role || "Editor"
+        },
+        seo: {
+            metaTitle: p.meta_title || p.seo_title || p.title,
+            metaDescription: p.meta_description || p.seo_description || p.excerpt,
+            keywords: Array.isArray(p.keywords) ? p.keywords : (p.keywords ? p.keywords.split(',') : []),
+            ogImage: p.og_image || p.featured_image,
+            canonicalUrl: p.canonical_url
+        }
+    };
+}
+
 export const blogService = {
     getPosts: async (): Promise<BlogPost[]> => {
         try {
@@ -95,36 +129,35 @@ export const blogService = {
 
             if (!res.ok) {
                 console.error("Failed to fetch posts from CRM:", res.statusText);
-                return posts; // Fallback to mock data on error (for demo purposes)
+                return posts; // Fallback to mock data on error
             }
 
             const data = await res.json();
 
-            // If API returns empty (no posts yet), showing mock data so the site doesn't look broken
             if (Array.isArray(data) && data.length === 0) {
                 return posts;
             }
 
-            return data;
+            return Array.isArray(data) ? data.map(normalizePost) : posts;
         } catch (error) {
             console.error("Error fetching posts:", error);
-            return posts; // Fallback to mock data
+            return posts;
         }
     },
 
     getPostBySlug: async (slug: string): Promise<BlogPost | undefined> => {
         try {
-            // Strategy 1: Try direct slug endpoint (as requested)
+            // Strategy 1: Direct slug endpoint
             let res = await fetch(`${CRM_URL}/api/cms/posts/${slug}`, {
                 next: { revalidate: 60 }
             });
 
             if (res.ok) {
-                return await res.json();
+                const data = await res.json();
+                return normalizePost(data);
             }
 
-            // Strategy 2: If direct fails (404), try filtering logic ?slug=
-            console.warn(`Direct fetch for ${slug} failed, trying query param...`);
+            // Strategy 2: Query param fallback
             res = await fetch(`${CRM_URL}/api/cms/posts?slug=${slug}`, {
                 next: { revalidate: 60 }
             });
@@ -132,7 +165,7 @@ export const blogService = {
             if (res.ok) {
                 const data = await res.json();
                 if (Array.isArray(data) && data.length > 0) {
-                    return data[0];
+                    return normalizePost(data[0]);
                 }
             }
 

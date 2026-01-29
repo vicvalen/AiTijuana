@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import RotatingText from "./RotatingText";
+import { Button } from "@/components/ui/button";
 
 const ArrowRight = () => (
   <svg

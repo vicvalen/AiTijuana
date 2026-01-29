@@ -102,6 +102,20 @@ module.exports = {
             opacity: '0.7',
           },
         },
+        'slide-left': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        'slide-left-mobile': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+      },
+      animation: {
+        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+        'float': 'float 4s ease-in-out infinite',
+        'slide-left': 'slide-left 20s linear infinite',
+        'slide-left-mobile': 'slide-left-mobile 15s linear infinite',
       },
     },
   },

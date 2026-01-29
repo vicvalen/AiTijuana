@@ -9,6 +9,19 @@ export interface BlogPost {
     readTime: string;
     image: string;
     tags: string[];
+    // Advanced SEO Fields
+    updatedAt?: string;
+    author?: {
+        name: string;
+        avatar?: string;
+        role?: string;
+    };
+    seo?: {
+        metaTitle?: string;
+        metaDescription?: string;
+        keywords?: string[];
+        ogImage?: string;
+    };
 }
 
 // Mock Database

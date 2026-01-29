@@ -16,11 +16,11 @@ export default async function BlogPage() {
 
     return (
         <Layout>
-            <section className="relative pt-32 pb-20 min-h-screen bg-black overflow-hidden">
-                <div className="absolute inset-0 bg-background-primary z-0" />
-                <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-20">
-                    <div className="absolute top-[10%] right-[20%] w-[40%] h-[40%] rounded-full bg-accent-primary blur-[120px] animate-pulse-glow" />
-                    <div className="absolute bottom-[20%] left-[10%] w-[30%] h-[30%] rounded-full bg-accent-secondary blur-[100px]" />
+            <section className="relative pt-32 pb-20 min-h-screen overflow-hidden">
+                {/* <div className="absolute inset-0 bg-background-primary z-0" /> */}
+                <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+                    <div className="absolute top-[10%] right-[20%] w-[40%] h-[40%] rounded-full bg-accent-primary/20 blur-[120px] animate-pulse-glow" />
+                    <div className="absolute bottom-[20%] left-[10%] w-[30%] h-[30%] rounded-full bg-accent-secondary/20 blur-[100px]" />
                 </div>
 
                 <div className="container-max relative z-10 px-4">

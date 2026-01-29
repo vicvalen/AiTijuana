@@ -46,7 +46,7 @@ export default async function BlogPostPage({ params }: Props) {
         <Layout>
             <article className="min-h-screen pt-32 pb-20 relative overflow-hidden">
                 {/* Background Elements */}
-                <div className="absolute inset-0 bg-background-primary z-0" />
+                {/* <div className="absolute inset-0 bg-background-primary z-0" /> */}
                 {/* Cyberpunk Grid Overlay */}
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none z-0 mix-blend-overlay"></div>
 

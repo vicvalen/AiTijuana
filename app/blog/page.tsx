@@ -7,65 +7,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 
-// Placeholder data
-const articles = [
-    {
-        id: 1,
-        title: "El Futuro del Marketing Digital con IA",
-        excerpt: "Descubre cómo la inteligencia artificial está revolucionando la forma en que las marcas conectan con sus audiencias.",
-        category: "Tendencias",
-        date: "Oct 12, 2023",
-        readTime: "5 min",
-        image: "/images/blog/ai-marketing.jpg", // Placeholder
-    },
-    {
-        id: 2,
-        title: "Agentes Inteligentes: Más allá del Soporte",
-        excerpt: "Los Agentes ya no son solo para responder preguntas frecuentes. Aprende cómo pueden cerrar ventas automáticamente.",
-        category: "Automatización",
-        date: "Oct 15, 2023",
-        readTime: "4 min",
-        image: "/images/blog/chatbots.jpg", // Placeholder
-    },
-    {
-        id: 3,
-        title: "Optimización SEO en la Era de la IA",
-        excerpt: "Estrategias clave para mantener tu posicionamiento en buscadores frente a los nuevos algoritmos de IA.",
-        category: "SEO",
-        date: "Oct 20, 2023",
-        readTime: "6 min",
-        image: "/images/blog/seo-ai.jpg", // Placeholder
-    },
-    {
-        id: 4,
-        title: "Personalización a Escala: El Santo Grial",
-        excerpt: "Cómo utilizar datos y algoritmos para ofrecer experiencias únicas a millones de usuarios simultáneamente.",
-        category: "Estrategia",
-        date: "Oct 25, 2023",
-        readTime: "5 min",
-        image: "/images/blog/personalization.jpg", // Placeholder
-    },
-    {
-        id: 5,
-        title: "Herramientas de IA que tu Agencia Necesita",
-        excerpt: "Una lista curada de las mejores herramientas de inteligencia artificial para potenciar la productividad de tu equipo.",
-        category: "Herramientas",
-        date: "Nov 01, 2023",
-        readTime: "7 min",
-        image: "/images/blog/tools.jpg", // Placeholder
-    },
-    {
-        id: 6,
-        title: "Ética en la Inteligencia Artificial",
-        excerpt: "Navegando los desafíos éticos y de privacidad al implementar soluciones de IA en tu negocio.",
-        category: "Ética",
-        date: "Nov 05, 2023",
-        readTime: "4 min",
-        image: "/images/blog/ethics.jpg", // Placeholder
-    },
-];
+import { blogService } from "@/lib/blog-service";
 
-export default function BlogPage() {
+export const revalidate = 3600; // ISR: Revalidate every hour
+
+export default async function BlogPage() {
+    const articles = await blogService.getPosts();
+
     return (
         <Layout>
             <section className="relative pt-32 pb-20 min-h-screen">
@@ -111,49 +59,50 @@ export default function BlogPage() {
                     {/* Articles Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {articles.map((article, index) => (
-                            <Card key={article.id} className="bg-background-card border-border-primary overflow-hidden hover:border-border-highlight transition-all duration-300 group flex flex-col h-full animate-slide-in-from-bottom-2" style={{ animationDelay: `${index * 100}ms` }}>
-                                <div className="relative h-48 w-full bg-background-secondary overflow-hidden">
-                                    {/* Placeholder Image Logic */}
-                                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-background-secondary to-background-card text-text-secondary">
-                                        <span className="text-4xl font-bold opacity-10">Ai</span>
-                                    </div>
-                                    {/* Actual Image would go here */}
-                                    {/* <Image src={article.image} alt={article.title} fill className="object-cover transition-transform duration-500 group-hover:scale-110" /> */}
-                                    <div className="absolute top-4 left-4">
-                                        <Badge className="bg-accent-secondary text-white hover:bg-accent-secondary/90">
-                                            {article.category}
-                                        </Badge>
-                                    </div>
-                                </div>
-
-                                <CardHeader className="pb-2">
-                                    <div className="flex items-center gap-4 text-xs text-text-secondary mb-2">
-                                        <div className="flex items-center gap-1">
-                                            <Calendar className="w-3 h-3" />
-                                            {article.date}
+                            <Link href={`/blog/${article.slug}`} key={article.id} className="block h-full">
+                                <Card className="bg-background-card border-border-primary overflow-hidden hover:border-border-highlight transition-all duration-300 group flex flex-col h-full animate-slide-in-from-bottom-2" style={{ animationDelay: `${index * 100}ms` }}>
+                                    <div className="relative h-48 w-full bg-background-secondary overflow-hidden">
+                                        {/* Placeholder Image Logic */}
+                                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-background-secondary to-background-card text-text-secondary">
+                                            <span className="text-4xl font-bold opacity-10">Ai</span>
                                         </div>
-                                        <div className="flex items-center gap-1">
-                                            <Clock className="w-3 h-3" />
-                                            {article.readTime}
+                                        {/* <Image src={article.image} alt={article.title} fill className="object-cover transition-transform duration-500 group-hover:scale-110" /> */}
+                                        <div className="absolute top-4 left-4">
+                                            <Badge className="bg-accent-secondary text-white hover:bg-accent-secondary/90">
+                                                {article.category}
+                                            </Badge>
                                         </div>
                                     </div>
-                                    <h3 className="text-xl font-bold text-text-primary group-hover:text-accent-primary transition-colors line-clamp-2">
-                                        {article.title}
-                                    </h3>
-                                </CardHeader>
 
-                                <CardContent className="flex-grow">
-                                    <p className="text-text-secondary text-sm line-clamp-3">
-                                        {article.excerpt}
-                                    </p>
-                                </CardContent>
+                                    <CardHeader className="pb-2">
+                                        <div className="flex items-center gap-4 text-xs text-text-secondary mb-2">
+                                            <div className="flex items-center gap-1">
+                                                <Calendar className="w-3 h-3" />
+                                                {article.date}
+                                            </div>
+                                            <div className="flex items-center gap-1">
+                                                <Clock className="w-3 h-3" />
+                                                {article.readTime}
+                                            </div>
+                                        </div>
+                                        <h3 className="text-xl font-bold text-text-primary group-hover:text-accent-primary transition-colors line-clamp-2">
+                                            {article.title}
+                                        </h3>
+                                    </CardHeader>
 
-                                <CardFooter className="pt-0">
-                                    <Button variant="link" className="p-0 h-auto text-accent-primary hover:text-accent-secondary group-hover:translate-x-1 transition-transform">
-                                        Leer más <ArrowRight className="ml-1 w-4 h-4" />
-                                    </Button>
-                                </CardFooter>
-                            </Card>
+                                    <CardContent className="flex-grow">
+                                        <p className="text-text-secondary text-sm line-clamp-3">
+                                            {article.excerpt}
+                                        </p>
+                                    </CardContent>
+
+                                    <CardFooter className="pt-0">
+                                        <Button variant="link" className="p-0 h-auto text-accent-primary hover:text-accent-secondary group-hover:translate-x-1 transition-transform">
+                                            Leer más <ArrowRight className="ml-1 w-4 h-4" />
+                                        </Button>
+                                    </CardFooter>
+                                </Card>
+                            </Link>
                         ))}
                     </div>
 

@@ -11,7 +11,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'Poppins', 'sans-serif'],
+        sans: ['var(--font-exo2)', 'Inter', 'sans-serif'],
+        display: ['var(--font-orbitron)', 'sans-serif'],
       },
       colors: {
         // DarkTech Gradient Theme Colors

@@ -1,8 +1,11 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Suspense } from "react"
-import "./globals.css"
-import { PageTransition } from "@/components/page-transition"
+import type { Metadata } from "next";
+import { Suspense } from "react";
+import "./globals.css";
+import { Inter, Orbitron, Exo_2 } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const orbitron = Orbitron({ subsets: ["latin"], variable: "--font-orbitron" });
+const exo2 = Exo_2({ subsets: ["latin"], variable: "--font-exo2" });
 import { NavigationTransition } from "@/components/navigation-transition"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
@@ -92,7 +95,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es-MX" className="dark">
-      <body className="font-sans antialiased">
+      <body className={`${inter.variable} ${orbitron.variable} ${exo2.variable} font-sans antialiased bg-background-primary text-text-primary`}>
         <JsonLd />
         <Suspense fallback={null}>
           <NavigationTransition />

@@ -6,6 +6,7 @@ import { Inter, Orbitron, Exo_2 } from "next/font/google";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const orbitron = Orbitron({ subsets: ["latin"], variable: "--font-orbitron" });
 const exo2 = Exo_2({ subsets: ["latin"], variable: "--font-exo2" });
+import { PageTransition } from "@/components/page-transition"
 import { NavigationTransition } from "@/components/navigation-transition"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"

@@ -101,16 +101,31 @@ export const blogService = {
 
     getPostBySlug: async (slug: string): Promise<BlogPost | undefined> => {
         try {
-            const res = await fetch(`${CRM_URL}/api/cms/posts/${slug}`, {
+            // Strategy 1: Try direct slug endpoint (as requested)
+            let res = await fetch(`${CRM_URL}/api/cms/posts/${slug}`, {
                 next: { revalidate: 60 }
             });
 
-            if (!res.ok) {
-                // Try finding in mock data if API fails
-                return posts.find(post => post.slug === slug);
+            if (res.ok) {
+                return await res.json();
             }
 
-            return await res.json();
+            // Strategy 2: If direct fails (404), try filtering logic ?slug=
+            console.warn(`Direct fetch for ${slug} failed, trying query param...`);
+            res = await fetch(`${CRM_URL}/api/cms/posts?slug=${slug}`, {
+                next: { revalidate: 60 }
+            });
+
+            if (res.ok) {
+                const data = await res.json();
+                if (Array.isArray(data) && data.length > 0) {
+                    return data[0];
+                }
+            }
+
+            // Strategy 3: Mock Data Fallback
+            return posts.find(post => post.slug === slug);
+
         } catch (error) {
             console.error(`Error fetching post ${slug}:`, error);
             return posts.find(post => post.slug === slug);

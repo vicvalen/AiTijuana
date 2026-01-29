@@ -71,15 +71,49 @@ const posts: BlogPost[] = [
     },
 ];
 
+const CRM_URL = 'https://crm.aitijuana.studio';
+
 export const blogService = {
     getPosts: async (): Promise<BlogPost[]> => {
-        // Simulate API delay
-        // await new Promise(resolve => setTimeout(resolve, 100));
-        return posts;
+        try {
+            const res = await fetch(`${CRM_URL}/api/cms/posts`, {
+                next: { revalidate: 60 } // cache 1 minute
+            });
+
+            if (!res.ok) {
+                console.error("Failed to fetch posts from CRM:", res.statusText);
+                return posts; // Fallback to mock data on error (for demo purposes)
+            }
+
+            const data = await res.json();
+
+            // If API returns empty (no posts yet), showing mock data so the site doesn't look broken
+            if (Array.isArray(data) && data.length === 0) {
+                return posts;
+            }
+
+            return data;
+        } catch (error) {
+            console.error("Error fetching posts:", error);
+            return posts; // Fallback to mock data
+        }
     },
 
     getPostBySlug: async (slug: string): Promise<BlogPost | undefined> => {
-        // await new Promise(resolve => setTimeout(resolve, 100));
-        return posts.find(post => post.slug === slug);
+        try {
+            const res = await fetch(`${CRM_URL}/api/cms/posts/${slug}`, {
+                next: { revalidate: 60 }
+            });
+
+            if (!res.ok) {
+                // Try finding in mock data if API fails
+                return posts.find(post => post.slug === slug);
+            }
+
+            return await res.json();
+        } catch (error) {
+            console.error(`Error fetching post ${slug}:`, error);
+            return posts.find(post => post.slug === slug);
+        }
     }
 };

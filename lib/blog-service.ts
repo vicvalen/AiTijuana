@@ -21,6 +21,7 @@ export interface BlogPost {
         metaDescription?: string;
         keywords?: string[];
         ogImage?: string;
+        canonicalUrl?: string;
     };
 }
 

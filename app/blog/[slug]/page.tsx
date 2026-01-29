@@ -118,18 +118,21 @@ export default async function BlogPostPage({ params }: Props) {
                             prose-blockquote:border-l-accent-primary prose-blockquote:bg-white/5 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:not-italic
                             prose-code:text-accent-secondary prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-mono
                             prose-li:text-text-secondary"
-                            dangerouslySetInnerHTML={{ __html: post.content }}
+                            dangerouslySetInnerHTML={{ __html: post.content || "<p>Contenido no disponible.</p>" }}
                         />
 
                         {/* Footer / Tags */}
                         <div className="mt-20 pt-10 border-t border-white/10">
                             <h4 className="font-display font-bold text-white mb-4">Etiquetas:</h4>
                             <div className="flex flex-wrap gap-2 mb-10">
-                                {post.tags.map(tag => (
+                                {(post.tags || []).map(tag => (
                                     <span key={tag} className="text-xs font-mono text-accent-secondary bg-accent-secondary/10 px-3 py-1.5 rounded border border-accent-secondary/20 hover:bg-accent-secondary/20 transition-colors cursor-pointer">
                                         #{tag.toUpperCase()}
                                     </span>
                                 ))}
+                                {(!post.tags || post.tags.length === 0) && (
+                                    <span className="text-xs text-text-secondary italic">Sin etiquetas</span>
+                                )}
                             </div>
 
                             <div className="flex justify-between items-center p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">

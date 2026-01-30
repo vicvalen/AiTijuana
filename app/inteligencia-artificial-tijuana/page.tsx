@@ -1,7 +1,7 @@
 import { Layout } from "@/components/layout";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, MapPin, TrendingUp, Zap, BarChart3, Globe2, AlertTriangle } from "lucide-react";
+import { ArrowRight, CheckCircle2, MapPin, TrendingUp, Zap, Mic, Quote } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
@@ -11,12 +11,12 @@ import { ROICalculatorSection } from "@/components/roi-calculator-section";
 import { CTASection } from "@/components/cta-section";
 
 export const metadata: Metadata = {
-    title: "Inteligencia Artificial en Tijuana: Reporte 2026 | Ai-Studio",
-    description: "Análisis del ecosistema de IA en Tijuana 2026: Reforma Aduanera, Manufactura 4.0 y el auge del HealthTech. Descubre cómo Ai-Studio ayuda a las empresas modernas.",
-    keywords: ["inteligencia artificial en tijuana", "agencia ai tijuana", "reforma aduanera 2026", "manufactura 4.0 tijuana", "automatizacion logistica baja california"],
+    title: "El Futuro de la IA en Tijuana: Entrevista con Ai-Studio",
+    description: "Una conversación franca sobre el ecosistema de startups, el auge del HealthTech y por qué solo el 7.6% de las empresas están listas para la revolución de IA en Baja California.",
+    keywords: ["inteligencia artificial en tijuana", "agencia ai tijuana", "startups tijuana", "healthtech baja california", "innovacion en frontera"],
     openGraph: {
-        title: "Tijuana 2026: El Hub de Inteligencia Artificial Binacional",
-        description: "Solo el 7.6% de las empresas en Tijuana tienen una estrategia de IA. ¿De qué lado de la estadística estás?",
+        title: "Entrevista: El Futuro de la IA en Tijuana",
+        description: "¿Está Tijuana lista para dejar de ser solo manufactura? Conversamos sobre el nuevo Hub Tecnológico.",
         images: ["https://aitijuana.studio/og-image-tijuana.jpg"],
         type: "article",
         locale: "es_MX"
@@ -26,31 +26,31 @@ export const metadata: Metadata = {
 export default function PillarPage() {
     return (
         <Layout>
-            {/* HERO SECTION - Editorial Style */}
+            {/* HERRO SECTION - Editorial/Interview Style */}
             <section className="relative pt-32 pb-20 overflow-hidden bg-black text-white">
                 <div className="absolute inset-0 bg-background-primary z-0" />
-                <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-accent-primary/10 to-transparent z-0 pointer-events-none" />
+                <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-accent-primary/5 to-transparent z-0 pointer-events-none" />
 
                 <div className="container-max relative z-10 px-4">
                     <div className="max-w-4xl mx-auto">
                         <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-accent-secondary/30 bg-accent-secondary/10 backdrop-blur-md">
-                            <MapPin className="w-4 h-4 text-accent-secondary" />
-                            <span className="text-accent-secondary text-sm font-sans tracking-wide uppercase font-semibold">Reporte Estratégico: Tijuana 2026</span>
+                            <Mic className="w-4 h-4 text-accent-secondary" />
+                            <span className="text-accent-secondary text-sm font-sans tracking-wide uppercase font-semibold">Entrevista Especial</span>
                         </div>
 
                         <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-8 leading-tight tracking-tight text-white">
-                            Inteligencia Artificial en Tijuana: <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-secondary to-accent-primary">El Momento es Ahora</span>
+                            El Despertar de la <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-secondary to-accent-primary">Inteligencia Artificial en Tijuana</span>
                         </h1>
 
                         <p className="text-xl md:text-2xl text-text-secondary font-light leading-relaxed mb-8">
-                            Con la Reforma Aduanera 2026 y el auge del Nearshoring, Tijuana se posiciona como el Hub Tecnológico Binacional más importante. La adopción de IA ya no es opcional.
+                            Mientras los titulares se enfocan en Silicon Valley, una revolución silenciosa ocurre en la frontera. Nos sentamos con el equipo de estrategia de <strong>Ai-Studio</strong> para entender el verdadero impacto en la región.
                         </p>
 
                         <div className="flex items-center gap-4 text-sm text-text-secondary border-t border-white/10 pt-6">
-                            <span>Por <strong>Equipo Ai-Studio</strong></span>
+                            <span>Por <strong>Redacción Tech Baja</strong></span>
                             <span className="w-1 h-1 rounded-full bg-white/20"></span>
-                            <span>Lectura de 7 min</span>
+                            <span>Lectura de 8 min</span>
                             <span className="w-1 h-1 rounded-full bg-white/20"></span>
                             <span>Actualizado: Enero 2026</span>
                         </div>
@@ -58,148 +58,147 @@ export default function PillarPage() {
                 </div>
             </section>
 
-            {/* CONTENT BODY - Hybrid Layout */}
+            {/* CONTENT BODY - Interview Format */}
             <section className="py-16 px-4 bg-background-primary">
                 <div className="container-max grid grid-cols-1 lg:grid-cols-12 gap-12">
 
-                    {/* Left Column: Article Content */}
+                    {/* Left Column: Interview Content */}
                     <div className="lg:col-span-8 prose prose-invert prose-lg max-w-none prose-headings:font-display prose-headings:text-white prose-p:text-text-secondary prose-strong:text-white prose-li:text-text-secondary">
 
-                        {/* THE STATS HOOK */}
-                        <div className="bg-white/5 border border-white/10 rounded-2xl p-8 mb-12 not-prose">
-                            <h3 className="text-2xl font-bold text-white mb-6 font-display flex items-center gap-2">
-                                <BarChart3 className="text-accent-primary" /> La Realidad en Datos (2025-2026)
-                            </h3>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                                <div>
-                                    <p className="text-4xl font-bold text-accent-secondary mb-2">7.6%</p>
-                                    <p className="text-sm text-text-secondary">De las empresas locales tienen una estrategia de IA definida.</p>
-                                </div>
-                                <div>
-                                    <p className="text-4xl font-bold text-white mb-2">30%</p>
-                                    <p className="text-sm text-text-secondary">Carece de personal especializado, frenando su crecimiento.</p>
-                                </div>
-                                <div className="col-span-1 sm:col-span-2 pt-4 border-t border-white/10">
-                                    <p className="text-sm text-gray-400 italic">Fuente: Consejo Coordinador Empresarial (CCE) Tijuana</p>
-                                </div>
-                            </div>
+                        <p className="lead text-xl text-white font-medium border-b border-white/10 pb-8 mb-8">
+                            Tijuana se posiciona como un hub tecnológico mediante eventos como el <em>Baja Innovation Day</em> y el <em>AI Summit</em>. Pero, ¿qué hay detrás del hype? Platicamos sobre HealthTech, startups y la realidad operativa de las empresas locales.
+                        </p>
+
+                        <h3>Q: Se habla mucho de Tijuana como el próximo Hub Tecnológico. ¿Es realidad o puro marketing?</h3>
+                        <p>
+                            <strong>Ai-Studio:</strong> Es una realidad, pero diferente a lo que muchos imaginan. No somos Silicon Valley; somos algo único. La región está impulsando la inteligencia artificial en sectores muy específicos como <strong>HealthTech</strong> y manufactura avanzada.
+                        </p>
+                        <p>
+                            Lo vemos con empresas como ITJ y el crecimiento de dispositivos médicos. Ya no es solo "ensamblar"; ahora hay ingeniería y algoritmos desarrollados aquí mismo para detectar cáncer o monitorear diabetes. El talento de UABC y CETYS está empezando a quedarse aquí en lugar de fugarse al norte.
+                        </p>
+
+                        <h3>Q: Mencionas el talento. ¿Qué papel juegan las universidades?</h3>
+                        <p>
+                            <strong>Ai-Studio:</strong> Crucial. La UABC, por ejemplo, ha lanzado nuevas carreras enfocadas en Ingeniería de Datos e IA. Esto está creando una generación de ingenieros que entienden el contexto local. Además, iniciativas como el <em>AI Lab School</em> y grupos de trabajo dentro de IT@BAJA están acelerando esa curva de aprendizaje.
+                        </p>
+
+                        <div className="my-10 p-8 bg-white/5 border-l-4 border-accent-secondary rounded-r-xl not-prose">
+                            <Quote className="w-8 h-8 text-accent-secondary mb-4 opacity-50" />
+                            <p className="text-xl font-display font-medium text-white italic mb-4">
+                                "El verdadero reto no es la tecnología, es la adopción. Solo el 7.6% de las empresas en Tijuana tienen una estrategia clara de IA."
+                            </p>
+                            <p className="text-sm text-text-secondary font-bold uppercase tracking-wider">— Reporte CCE Tijuana</p>
                         </div>
 
-                        <h2>Transformación Industrial y Manufactura 4.0</h2>
+                        <h3>Q: Ese 7.6% suena alarmante. ¿Por qué es tan bajo?</h3>
                         <p>
-                            La industria maquiladora, el motor de nuestra ciudad, está viviendo una transición crítica. Ya no basta con "manufacturar"; ahora se trata de la <strong>Manufactura Inteligente</strong>. Organismos como <strong>DEITAC</strong> están impulsando agresivamente la adopción de IA para:
+                            <strong>Ai-Studio:</strong> Es el clásico dilema de la innovación. El 80% de las empresas está en etapa de "exploración", sabiendo que necesitan hacerlo pero sin saber cómo. Un 30% nos dice que carecen de personal especializado.
+                        </p>
+                        <p>
+                            Ahí es donde entramos nosotros. No vendemos "software"; vendemos la estrategia para que ese 92% restante no se quede atrás. La adopción estratégica es lo que separará a las empresas líderes de las que desaparecerán en 2030.
+                        </p>
+
+                        <h3>Q: Hablemos del ecosistema Startup. ¿Qué está pasando ahí?</h3>
+                        <p>
+                            <strong>Ai-Studio:</strong> Está en ebullición. Vemos un tránsito del e-commerce tradicional hacia soluciones <em>Deep Tech</em>. Tijuana, al ser vecina de San Diego, permite un ecosistema binacional único.
+                        </p>
+                        <p>
+                            Startups locales están colaborando en foros como el <em>San Diego Startup Week</em> (que ya tiene sede aquí). La visión es clara: convertir a la región Cali-Baja en un corredor de innovación donde la IA optimiza desde la logística transfronteriza hasta la atención al cliente bilingüe.
+                        </p>
+
+                        <h3>Q: Para el empresario local que nos lee, ¿por dónde debería empezar?</h3>
+                        <p>
+                            <strong>Ai-Studio:</strong> No intentes construir el próximo Google. Empieza automatizando tus dolores de cabeza diarios.
                         </p>
                         <ul>
-                            <li><strong>Optimización de Inventarios:</strong> Predicción de demanda para evitar cuellos de botella.</li>
-                            <li><strong>Control de Calidad:</strong> Visión computacional que detecta defectos en milisegundos.</li>
-                            <li><strong>Toma de Decisiones:</strong> Lo que antes tomaba días de reporteo en Excel, hoy se genera en tiempo real.</li>
+                            <li>¿Tu equipo de ventas pierde tiempo calificando leads en WhatsApp? <strong>Pon un Agente IA.</strong></li>
+                            <li>¿Tus procesos logísticos son manuales? <strong>Digitalízalos.</strong></li>
+                            <li>¿Tu servicio al cliente no cubre el 24/7? <strong>Automatízalo.</strong></li>
                         </ul>
-
-                        <h2>El Reto de la Reforma Aduanera 2026</h2>
-                        <div className="p-6 bg-accent-warning/10 border-l-4 border-accent-warning rounded-r-lg not-prose mb-8">
-                            <h4 className="text-accent-warning font-bold flex items-center gap-2 mb-2">
-                                <AlertTriangle className="w-5 h-5" /> Atención Logística
-                            </h4>
-                            <p className="text-text-secondary text-sm">
-                                Desde el 1 de enero de 2026, la nueva Reforma obliga a la digitalización total y trazabilidad avanzada. Las empresas que no automaticen su cumplimiento normativo enfrentarán serios retrasos en el cruce fronterizo.
-                            </p>
-                        </div>
                         <p>
-                            La IA es la única herramienta capaz de manejar la complejidad de estos nuevos requisitos aduanales a la velocidad que exige la frontera Tijuana-San Diego.
+                            La tecnología ya está aquí. La pregunta es: ¿vas a usarla tú o tu competencia?
                         </p>
-
-                        <h2>Salud: El Nuevo "Silicon Valley" Médico</h2>
-                        <p>
-                            Tijuana se consolida como líder en <strong>HealthTech</strong>. Gracias al turismo médico y la colaboración binacional, estamos viendo aplicaciones fascinantes: desde detección temprana de diabetes hasta la automatización de flujos clínicos en hospitales que atienden pacientes de ambos lados de la frontera.
-                        </p>
-
-                        <h2>Talento y Educación: El Futuro es Binacional</h2>
-                        <p>
-                            Instituciones como la <strong>UABC</strong> (con su nueva Licenciatura en Ingeniería de Datos e IA) y eventos como el <strong>AI Summit Tijuana</strong> están cerrando la brecha de talento. Sin embargo, la demanda supera la oferta.
-                        </p>
-                        <p>
-                            Aquí es donde <strong>Ai-Studio</strong> entra en juego. No solo implementamos tecnología; capacitamos a tus equipos para que la transición sea orgánica y efectiva.
-                        </p>
-
-                        <div className="my-12">
-                            <h3>¿Por qué elegir una Agencia Local?</h3>
-                            <p>
-                                Podrías contratar software genérico, pero la IA necesita contexto. Entender la dinámica fronteriza, el comercio binacional y los retos específicos de Baja California es nuestra ventaja competitiva.
-                            </p>
-                        </div>
 
                     </div>
 
                     {/* Right Column: Sticky CTA Sidebar */}
                     <div className="lg:col-span-4 space-y-8">
-                        <div className="sticky top-24 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-glow-highlight/10">
-                            <h3 className="text-xl font-bold text-white mb-2 font-display">No seas parte del 92% rezagado</h3>
-                            <p className="text-sm text-text-secondary mb-6">
-                                La competencia ya está automatizando. Descubre tu potencial de ahorro hoy.
-                            </p>
+                        <div className="sticky top-24">
+                            {/* CTA Box */}
+                            <div className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-glow-highlight/10 mb-8">
+                                <h3 className="text-xl font-bold text-white mb-2 font-display">¿Tu empresa es parte del 7.6%?</h3>
+                                <p className="text-sm text-text-secondary mb-6">
+                                    Adelántate a la curva de adopción tecnológica en Tijuana.
+                                </p>
 
-                            <div className="space-y-4 mb-8">
-                                <div className="flex items-center gap-3 text-sm text-text-secondary">
-                                    <Globe2 className="w-4 h-4 text-accent-primary" />
-                                    <span>Estrategias Binacionales</span>
+                                <div className="space-y-4 mb-8">
+                                    <div className="flex items-center gap-3 text-sm text-text-secondary">
+                                        <TrendingUp className="w-4 h-4 text-accent-success" />
+                                        <span>Diagnóstico de IA Gratuito</span>
+                                    </div>
+                                    <div className="flex items-center gap-3 text-sm text-text-secondary">
+                                        <Zap className="w-4 h-4 text-accent-warning" />
+                                        <span>Automatización Binacional</span>
+                                    </div>
                                 </div>
-                                <div className="flex items-center gap-3 text-sm text-text-secondary">
-                                    <Zap className="w-4 h-4 text-accent-warning" />
-                                    <span>Automatización Aduanera</span>
-                                </div>
-                                <div className="flex items-center gap-3 text-sm text-text-secondary">
-                                    <TrendingUp className="w-4 h-4 text-accent-success" />
-                                    <span>Ventas 24/7 con Agentes IA</span>
-                                </div>
+
+                                <Link href="/contacto" className="block">
+                                    <Button className="w-full bg-accent-primary hover:bg-accent-primary/90 text-white font-bold py-6 shadow-glow-highlight">
+                                        Hablar con un Experto
+                                    </Button>
+                                </Link>
                             </div>
 
-                            <Link href="/contacto" className="block">
-                                <Button className="w-full bg-accent-primary hover:bg-accent-primary/90 text-white font-bold py-6 shadow-glow-highlight">
-                                    Solicitar Auditoría de IA
-                                </Button>
-                            </Link>
-                        </div>
-
-                        {/* Context Badge */}
-                        <div className="p-6 rounded-2xl border border-white/5 bg-black/20">
-                            <h4 className="font-bold text-white mb-2 text-sm uppercase tracking-wider">Próximos Eventos</h4>
-                            <ul className="space-y-3 text-sm text-text-secondary">
-                                <li className="flex justify-between border-b border-white/5 pb-2">
-                                    <span>2do Foro de IA</span>
-                                    <span className="text-accent-secondary">2026</span>
-                                </li>
-                                <li className="flex justify-between border-b border-white/5 pb-2">
-                                    <span>Seminarios Index</span>
-                                    <span className="text-accent-secondary">Ene-Feb</span>
-                                </li>
-                                <li className="flex justify-between">
-                                    <span>Baja Innovation Day</span>
-                                    <span className="text-accent-secondary">TBA</span>
-                                </li>
-                            </ul>
+                            {/* Context Box */}
+                            <div className="p-6 rounded-2xl border border-white/5 bg-black/20">
+                                <h4 className="font-bold text-white mb-4 text-sm uppercase tracking-wider">Ecosistema Local</h4>
+                                <ul className="space-y-4 text-sm text-text-secondary">
+                                    <li className="flex items-start gap-3">
+                                        <MapPin className="w-4 h-4 text-accent-secondary mt-0.5" />
+                                        <div>
+                                            <span className="block text-white font-medium">Baja Innovation Day</span>
+                                            <span className="text-xs">El evento clave para conectar con el ecosistema inversión.</span>
+                                        </div>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <MapPin className="w-4 h-4 text-accent-secondary mt-0.5" />
+                                        <div>
+                                            <span className="block text-white font-medium">AI Summit Tijuana</span>
+                                            <span className="text-xs">Donde se define la agenda productiva de la región.</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* HYBRID COMPONENTS SECTION */}
+            {/* HYBRID COMPONENTS SECTION - Keeping the "Launch/Future" vibe */}
 
-            {/* 1. Reuse ROI Calculator because it fits the 'Business Value' narrative */}
-            <div className="border-t border-white/10">
-                <ROICalculatorSection />
+            <div className="border-t border-white/10 bg-background-primary">
+                <div className="container-max py-16 text-center">
+                    <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 text-white">
+                        El Futuro es Ahora
+                    </h2>
+                    <p className="text-xl text-text-secondary max-w-2xl mx-auto mb-12">
+                        Calcula el impacto que la Inteligencia Artificial puede tener en tu negocio hoy mismo.
+                    </p>
+                    <ROICalculatorSection />
+                </div>
             </div>
 
-            {/* 2. Final CTA */}
+            {/* Final CTA */}
             <CTASection />
 
-            {/* JSON-LD for LocalBusiness / Article */}
+            {/* JSON-LD for Article/Interview */}
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
-                        "@type": "Article",
-                        "headline": "Inteligencia Artificial en Tijuana 2026: El Futuro de la Industria",
+                        "@type": "NewsArticle",
+                        "headline": "Entrevista: El Futuro de la Inteligencia Artificial en Tijuana",
                         "image": "https://aitijuana.studio/og-image-tijuana.jpg",
                         "author": {
                             "@type": "Organization",
@@ -214,7 +213,7 @@ export default function PillarPage() {
                             }
                         },
                         "datePublished": "2026-01-29",
-                        "description": "Reporte sobre la adopción de Inteligencia Artificial en Tijuana, manufactura 4.0 y reforma aduanera 2026.",
+                        "description": "Análisis del ecosistema HealthTech, startups y adopción de IA en Tijuana. Entrevista exclusiva con expertos locales.",
                         "mainEntityOfPage": {
                             "@type": "WebPage",
                             "@id": "https://aitijuana.studio/inteligencia-artificial-tijuana"

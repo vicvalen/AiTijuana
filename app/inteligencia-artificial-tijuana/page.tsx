@@ -1,7 +1,7 @@
 import { Layout } from "@/components/layout";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, MapPin, TrendingUp, Zap } from "lucide-react";
+import { ArrowRight, CheckCircle2, MapPin, TrendingUp, Zap, BarChart3, Globe2, AlertTriangle } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
@@ -9,16 +9,15 @@ import { Metadata } from "next";
 // Reuse components for high conversion
 import { ROICalculatorSection } from "@/components/roi-calculator-section";
 import { CTASection } from "@/components/cta-section";
-import { ProblemSolutionSection } from "@/components/problem-solution-section";
 
 export const metadata: Metadata = {
-    title: "Inteligencia Artificial en Tijuana: Transformación Digital | Ai-Studio",
-    description: "Ai-Studio es la primera agencia especializada en Inteligencia Artificial en Tijuana. Automatización, Chatbots y Marketing Digital para empresas fronterizas. Descubre el futuro hoy.",
-    keywords: ["inteligencia artificial en tijuana", "agencia ai tijuana", "desarrollo de software tijuana", "automatizacion de procesos tijuana", "consultoria ia baja california"],
+    title: "Inteligencia Artificial en Tijuana: Reporte 2026 | Ai-Studio",
+    description: "Análisis del ecosistema de IA en Tijuana 2026: Reforma Aduanera, Manufactura 4.0 y el auge del HealthTech. Descubre cómo Ai-Studio ayuda a las empresas modernas.",
+    keywords: ["inteligencia artificial en tijuana", "agencia ai tijuana", "reforma aduanera 2026", "manufactura 4.0 tijuana", "automatizacion logistica baja california"],
     openGraph: {
-        title: "Inteligencia Artificial en Tijuana | El Futuro es Ahora",
-        description: "¿Tu negocio está listo para la era de la IA? Conoce a la agencia liderando la transformación digital en Tijuana.",
-        images: ["https://aitijuana.studio/og-image-tijuana.jpg"], // Placeholder, fits pattern
+        title: "Tijuana 2026: El Hub de Inteligencia Artificial Binacional",
+        description: "Solo el 7.6% de las empresas en Tijuana tienen una estrategia de IA. ¿De qué lado de la estadística estás?",
+        images: ["https://aitijuana.studio/og-image-tijuana.jpg"],
         type: "article",
         locale: "es_MX"
     }
@@ -27,34 +26,33 @@ export const metadata: Metadata = {
 export default function PillarPage() {
     return (
         <Layout>
-            {/* HERRO SECTION - Editorial Style */}
+            {/* HERO SECTION - Editorial Style */}
             <section className="relative pt-32 pb-20 overflow-hidden bg-black text-white">
                 <div className="absolute inset-0 bg-background-primary z-0" />
-                {/* Subtle Tijuana Map/Tech Texture optional */}
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-accent-primary/10 to-transparent z-0 pointer-events-none" />
 
                 <div className="container-max relative z-10 px-4">
                     <div className="max-w-4xl mx-auto">
                         <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-accent-secondary/30 bg-accent-secondary/10 backdrop-blur-md">
                             <MapPin className="w-4 h-4 text-accent-secondary" />
-                            <span className="text-accent-secondary text-sm font-sans tracking-wide uppercase font-semibold">Reporte Especial: Tijuana Tech</span>
+                            <span className="text-accent-secondary text-sm font-sans tracking-wide uppercase font-semibold">Reporte Estratégico: Tijuana 2026</span>
                         </div>
 
                         <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-8 leading-tight tracking-tight text-white">
-                            El Despertar de la <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-secondary to-accent-primary">Inteligencia Artificial en Tijuana</span>
+                            Inteligencia Artificial en Tijuana: <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-secondary to-accent-primary">El Momento es Ahora</span>
                         </h1>
 
                         <p className="text-xl md:text-2xl text-text-secondary font-light leading-relaxed mb-8">
-                            Mientras Silicon Valley acapara los titulares, una revolución silenciosa está ocurriendo en la frontera. Así es como las empresas de Tijuana están usando IA para competir a nivel global.
+                            Con la Reforma Aduanera 2026 y el auge del Nearshoring, Tijuana se posiciona como el Hub Tecnológico Binacional más importante. La adopción de IA ya no es opcional.
                         </p>
 
                         <div className="flex items-center gap-4 text-sm text-text-secondary border-t border-white/10 pt-6">
                             <span>Por <strong>Equipo Ai-Studio</strong></span>
                             <span className="w-1 h-1 rounded-full bg-white/20"></span>
-                            <span>Lectura de 5 min</span>
+                            <span>Lectura de 7 min</span>
                             <span className="w-1 h-1 rounded-full bg-white/20"></span>
-                            <span>Actualizado: Octubre 2023</span>
+                            <span>Actualizado: Enero 2026</span>
                         </div>
                     </div>
                 </div>
@@ -65,90 +63,120 @@ export default function PillarPage() {
                 <div className="container-max grid grid-cols-1 lg:grid-cols-12 gap-12">
 
                     {/* Left Column: Article Content */}
-                    <div className="lg:col-span-8 prose prose-invert prose-lg max-w-none prose-headings:font-display prose-headings:text-white prose-p:text-text-secondary">
-                        <h2>La Frontera de la Innovación</h2>
-                        <p>
-                            Tijuana siempre ha sido conocida por su manufactura y su turismo médico. Pero en los últimos 24 meses, un nuevo jugador ha entrado al tablero: la <strong>Inteligencia Artificial Generativa</strong>.
-                        </p>
-                        <p>
-                            No estamos hablando de robots físicos en las líneas de ensamblaje (que también existen), sino de algoritmos inteligentes capaces de automatizar ventas, atención al cliente y operaciones logísticas complejas.
-                        </p>
+                    <div className="lg:col-span-8 prose prose-invert prose-lg max-w-none prose-headings:font-display prose-headings:text-white prose-p:text-text-secondary prose-strong:text-white prose-li:text-text-secondary">
 
-                        <div className="my-10 p-6 bg-white/5 border-l-4 border-accent-secondary rounded-r-xl not-prose">
-                            <p className="text-lg font-medium text-white italic">
-                                "La empresa tijuanense que no adopte IA en los próximos 2 años, no estará compitiendo por clientes, estará luchando por sobrevivir."
-                            </p>
+                        {/* THE STATS HOOK */}
+                        <div className="bg-white/5 border border-white/10 rounded-2xl p-8 mb-12 not-prose">
+                            <h3 className="text-2xl font-bold text-white mb-6 font-display flex items-center gap-2">
+                                <BarChart3 className="text-accent-primary" /> La Realidad en Datos (2025-2026)
+                            </h3>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                                <div>
+                                    <p className="text-4xl font-bold text-accent-secondary mb-2">7.6%</p>
+                                    <p className="text-sm text-text-secondary">De las empresas locales tienen una estrategia de IA definida.</p>
+                                </div>
+                                <div>
+                                    <p className="text-4xl font-bold text-white mb-2">30%</p>
+                                    <p className="text-sm text-text-secondary">Carece de personal especializado, frenando su crecimiento.</p>
+                                </div>
+                                <div className="col-span-1 sm:col-span-2 pt-4 border-t border-white/10">
+                                    <p className="text-sm text-gray-400 italic">Fuente: Consejo Coordinador Empresarial (CCE) Tijuana</p>
+                                </div>
+                            </div>
                         </div>
 
-                        <h3>El Problema del Crecimiento Local</h3>
+                        <h2>Transformación Industrial y Manufactura 4.0</h2>
                         <p>
-                            El empresario de Baja California enfrenta un reto único: costos operativos al alza y una competencia feroz del mercado californiano. Contratar personal bilingüe calificado es cada vez más costoso y difícil.
+                            La industria maquiladora, el motor de nuestra ciudad, está viviendo una transición crítica. Ya no basta con "manufacturar"; ahora se trata de la <strong>Manufactura Inteligente</strong>. Organismos como <strong>DEITAC</strong> están impulsando agresivamente la adopción de IA para:
                         </p>
-                        <p>
-                            Aquí es donde entra <strong className="text-white">Ai-Studio</strong>. Nuestra tesis es simple: **No necesitas más empleados, necesitas mejores sistemas.**
-                        </p>
-
-                        <h3>Casos de Uso Reales en la Región</h3>
-                        <ul className="list-none pl-0 space-y-4 not-prose mb-8">
-                            <li className="flex items-start gap-3">
-                                <CheckCircle2 className="w-6 h-6 text-accent-primary shrink-0 mt-1" />
-                                <span className="text-text-secondary"><strong>Inmobiliarias:</strong> Agentes de IA que califican leads de WhatsApp 24/7 y agendan citas automáticamente en Zona Río y Playas.</span>
-                            </li>
-                            <li className="flex items-start gap-3">
-                                <CheckCircle2 className="w-6 h-6 text-accent-primary shrink-0 mt-1" />
-                                <span className="text-text-secondary"><strong>Dental & Médico:</strong> Seguimiento automático de pacientes post-consulta y reactivación de base de datos.</span>
-                            </li>
-                            <li className="flex items-start gap-3">
-                                <CheckCircle2 className="w-6 h-6 text-accent-primary shrink-0 mt-1" />
-                                <span className="text-text-secondary"><strong>Logística:</strong> Optimización de rutas y respuestas automatizadas a proveedores binacionales.</span>
-                            </li>
+                        <ul>
+                            <li><strong>Optimización de Inventarios:</strong> Predicción de demanda para evitar cuellos de botella.</li>
+                            <li><strong>Control de Calidad:</strong> Visión computacional que detecta defectos en milisegundos.</li>
+                            <li><strong>Toma de Decisiones:</strong> Lo que antes tomaba días de reporteo en Excel, hoy se genera en tiempo real.</li>
                         </ul>
 
-                        <h2>¿Por qué una Agencia Local?</h2>
+                        <h2>El Reto de la Reforma Aduanera 2026</h2>
+                        <div className="p-6 bg-accent-warning/10 border-l-4 border-accent-warning rounded-r-lg not-prose mb-8">
+                            <h4 className="text-accent-warning font-bold flex items-center gap-2 mb-2">
+                                <AlertTriangle className="w-5 h-5" /> Atención Logística
+                            </h4>
+                            <p className="text-text-secondary text-sm">
+                                Desde el 1 de enero de 2026, la nueva Reforma obliga a la digitalización total y trazabilidad avanzada. Las empresas que no automaticen su cumplimiento normativo enfrentarán serios retrasos en el cruce fronterizo.
+                            </p>
+                        </div>
                         <p>
-                            Podrías contratar un software genérico de Estados Unidos. Pero la IA necesita contexto. Entender el "Spanglish", la dinámica de la frontera, y los hábitos de consumo locales es algo que ChatGPT por sí solo no resuelve.
+                            La IA es la única herramienta capaz de manejar la complejidad de estos nuevos requisitos aduanales a la velocidad que exige la frontera Tijuana-San Diego.
+                        </p>
+
+                        <h2>Salud: El Nuevo "Silicon Valley" Médico</h2>
+                        <p>
+                            Tijuana se consolida como líder en <strong>HealthTech</strong>. Gracias al turismo médico y la colaboración binacional, estamos viendo aplicaciones fascinantes: desde detección temprana de diabetes hasta la automatización de flujos clínicos en hospitales que atienden pacientes de ambos lados de la frontera.
+                        </p>
+
+                        <h2>Talento y Educación: El Futuro es Binacional</h2>
+                        <p>
+                            Instituciones como la <strong>UABC</strong> (con su nueva Licenciatura en Ingeniería de Datos e IA) y eventos como el <strong>AI Summit Tijuana</strong> están cerrando la brecha de talento. Sin embargo, la demanda supera la oferta.
                         </p>
                         <p>
-                            Nosotros entrenamos modelos específicamente para el mercado de Tijuana-San Diego.
+                            Aquí es donde <strong>Ai-Studio</strong> entra en juego. No solo implementamos tecnología; capacitamos a tus equipos para que la transición sea orgánica y efectiva.
                         </p>
+
+                        <div className="my-12">
+                            <h3>¿Por qué elegir una Agencia Local?</h3>
+                            <p>
+                                Podrías contratar software genérico, pero la IA necesita contexto. Entender la dinámica fronteriza, el comercio binacional y los retos específicos de Baja California es nuestra ventaja competitiva.
+                            </p>
+                        </div>
 
                     </div>
 
                     {/* Right Column: Sticky CTA Sidebar */}
                     <div className="lg:col-span-4 space-y-8">
-                        <div className="sticky top-24 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
-                            <h3 className="text-xl font-bold text-white mb-2 font-display">¿Tu negocio está listo?</h3>
+                        <div className="sticky top-24 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-glow-highlight/10">
+                            <h3 className="text-xl font-bold text-white mb-2 font-display">No seas parte del 92% rezagado</h3>
                             <p className="text-sm text-text-secondary mb-6">
-                                Descubre cuánto podrías ahorrar automatizando tus procesos hoy mismo.
+                                La competencia ya está automatizando. Descubre tu potencial de ahorro hoy.
                             </p>
 
-                            <div className="space-y-4">
+                            <div className="space-y-4 mb-8">
                                 <div className="flex items-center gap-3 text-sm text-text-secondary">
-                                    <TrendingUp className="w-4 h-4 text-accent-success" />
-                                    <span>Aumenta ventas en un 35%</span>
+                                    <Globe2 className="w-4 h-4 text-accent-primary" />
+                                    <span>Estrategias Binacionales</span>
                                 </div>
                                 <div className="flex items-center gap-3 text-sm text-text-secondary">
                                     <Zap className="w-4 h-4 text-accent-warning" />
-                                    <span>Respuesta inmediata 24/7</span>
+                                    <span>Automatización Aduanera</span>
+                                </div>
+                                <div className="flex items-center gap-3 text-sm text-text-secondary">
+                                    <TrendingUp className="w-4 h-4 text-accent-success" />
+                                    <span>Ventas 24/7 con Agentes IA</span>
                                 </div>
                             </div>
 
-                            <Link href="/contacto" className="block mt-8">
-                                <Button className="w-full bg-accent-primary hover:bg-accent-primary/90 text-white font-bold py-6">
-                                    Agendar Consultoría Gratis
+                            <Link href="/contacto" className="block">
+                                <Button className="w-full bg-accent-primary hover:bg-accent-primary/90 text-white font-bold py-6 shadow-glow-highlight">
+                                    Solicitar Auditoría de IA
                                 </Button>
                             </Link>
                         </div>
 
-                        {/* Mini Bio */}
+                        {/* Context Badge */}
                         <div className="p-6 rounded-2xl border border-white/5 bg-black/20">
-                            <h4 className="font-bold text-white mb-2 text-sm uppercase tracking-wider">Sobre el Autor</h4>
-                            <p className="text-sm text-text-secondary mb-4">
-                                <strong>Ai-Studio Team</strong> es el colectivo de ingenieros y estrategas digitales liderando la implementación de IA en Baja California.
-                            </p>
-                            <Link href="/nosotros" className="text-accent-secondary text-sm hover:underline">
-                                Conoce al equipo &rarr;
-                            </Link>
+                            <h4 className="font-bold text-white mb-2 text-sm uppercase tracking-wider">Próximos Eventos</h4>
+                            <ul className="space-y-3 text-sm text-text-secondary">
+                                <li className="flex justify-between border-b border-white/5 pb-2">
+                                    <span>2do Foro de IA</span>
+                                    <span className="text-accent-secondary">2026</span>
+                                </li>
+                                <li className="flex justify-between border-b border-white/5 pb-2">
+                                    <span>Seminarios Index</span>
+                                    <span className="text-accent-secondary">Ene-Feb</span>
+                                </li>
+                                <li className="flex justify-between">
+                                    <span>Baja Innovation Day</span>
+                                    <span className="text-accent-secondary">TBA</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -161,10 +189,7 @@ export default function PillarPage() {
                 <ROICalculatorSection />
             </div>
 
-            {/* 2. Problem/Solution Reuse */}
-            {/* <ProblemSolutionSection /> */}
-
-            {/* 3. Final CTA */}
+            {/* 2. Final CTA */}
             <CTASection />
 
             {/* JSON-LD for LocalBusiness / Article */}
@@ -174,7 +199,7 @@ export default function PillarPage() {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "Article",
-                        "headline": "Inteligencia Artificial en Tijuana: El Futuro de los Negocios",
+                        "headline": "Inteligencia Artificial en Tijuana 2026: El Futuro de la Industria",
                         "image": "https://aitijuana.studio/og-image-tijuana.jpg",
                         "author": {
                             "@type": "Organization",
@@ -188,8 +213,8 @@ export default function PillarPage() {
                                 "url": "https://aitijuana.studio/logo.png"
                             }
                         },
-                        "datePublished": "2023-10-25",
-                        "description": "Análisis profundo sobre el impacto de la Inteligencia Artificial en el ecosistema empresarial de Tijuana y Baja California.",
+                        "datePublished": "2026-01-29",
+                        "description": "Reporte sobre la adopción de Inteligencia Artificial en Tijuana, manufactura 4.0 y reforma aduanera 2026.",
                         "mainEntityOfPage": {
                             "@type": "WebPage",
                             "@id": "https://aitijuana.studio/inteligencia-artificial-tijuana"
